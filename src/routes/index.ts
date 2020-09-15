@@ -5,10 +5,10 @@ const routes: Array<{
     load: () => Promise<any>
 }> = [
         {
-            exact: false,
+            exact: true,
             path: '/',
             name: '首页',
-            load: () => import(/* webpackChunkName: 'index' */ './index')
+            load: () => import(/* webpackChunkName: 'home' */ './home')
         },
         {
             exact: false,
@@ -18,7 +18,7 @@ const routes: Array<{
         },
         {
             exact: false,
-            path: '/practive',
+            path: '/practice',
             name: '五十音练习',
             load: () => import(/* webpackChunkName: 'practice' */ './practice')
         }

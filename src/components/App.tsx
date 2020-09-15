@@ -9,7 +9,7 @@ const Loading = () => <div />
 const Routes = routes.map(route => {
     return (
         <Route
-            exact={!!route.exact}
+            exact={route.exact}
             key={route.path}
             path={route.path}
             component={Loadable({ loader: route.load, loading: Loading })}

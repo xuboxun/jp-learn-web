@@ -1,0 +1,12 @@
+.layout {
+    display: flex;
+    height: 100%;
+
+}
+
+.sideWrapper {
+    width: 200px;
+}
+.contentWrapper {
+    flex: 1 1 auto;
+}

@@ -6,6 +6,12 @@ const routes: Array<{
 }> = [
         {
             exact: false,
+            path: '/',
+            name: '首页',
+            load: () => import(/* webpackChunkName: 'index' */ './index')
+        },
+        {
+            exact: false,
             path: '/learn',
             name: '五十音学习',
             load: () => import(/* webpackChunkName: 'learn' */ './learn')

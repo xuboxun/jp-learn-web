@@ -1,3 +1,1 @@
-import sidenav from './sidenav'
-
-export sidenav 
+export { sidenav } from './sidenav'

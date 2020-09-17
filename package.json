@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
     "@types/react-loadable": "^5.5.3",
     "node-sass": "^4.14.1"
   }

@@ -1,37 +1,50 @@
 import React, { FC, useState } from 'react'
-import { Menu, Button } from 'antd';
+import { Button, Tooltip } from 'antd';
+import {
+    MenuUnfoldOutlined,
+    MenuFoldOutlined
+} from '@ant-design/icons';
+import classNames from 'classnames'
 import { sidenav } from '../config'
+import styles from './index.module.scss'
 
 interface IProps {
-    collapsed: boolean
 }
 
-const Sidenav: FC<IProps> = ({ collapsed }) => {
+const Sidenav: FC<IProps> = () => {
+    const [collapsed, setCollapsed] = useState(false)
+
+    const toggleCollapsed = () => {
+        setCollapsed(!collapsed)
+    }
 
     return (
-        <Menu
-            defaultSelectedKeys={['1']}
-            defaultOpenKeys={['sub1']}
-            mode="inline"
-            theme="dark"
-            inlineCollapsed={collapsed}
-        >
-            {
-                sidenav.map(item => {
-                    return (
-                        <Menu.Item key={item.path} icon={item.icon}>
-                            {item.title}
-                        </Menu.Item>
-                    )
-                    // return (
-                    //     <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-                    //         <Menu.Item key="5">Option 5</Menu.Item>
-                    //         <Menu.Item key="6">Option 6</Menu.Item>
-                    //     </SubMenu>
-                    // )
-                })
-            }
-        </Menu>
+        <div className={classNames({
+            [styles.sideNav]: true,
+            [styles.sideCollapsed]: collapsed
+        })}>
+            <ul className={styles.navList}>
+                {
+                    sidenav.map(nav => {
+                        if (collapsed) {
+                            return (
+                                <Tooltip placement="right" title={nav.title}>
+                                    {nav.icon}
+                                </Tooltip>
+                            )
+                        }
+                        return (
+                            <a href={nav.path}>
+                                <li className={styles.navItem}>{nav.title}</li>
+                            </a>
+                        )
+                    })
+                }
+            </ul>
+            <Button type="text" onClick={toggleCollapsed} style={{ color: '#fff', marginLeft: 6 }}>
+                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            </Button>
+        </div>
     )
 }
 

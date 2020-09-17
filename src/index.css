@@ -12,6 +12,12 @@ code {
     monospace;
 }
 
+ul, li {
+  list-style-type: none;
+  padding: 0;
+
+}
+
 #root {
   height: 100%;
 }
